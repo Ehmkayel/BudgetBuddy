@@ -15,13 +15,12 @@
             <header class="flex items-center justify-center py-5 font-bold text-MintGreen md:text-3xl"><h1>Budget Buddy</h1></header>
             <main>
                 <section class="mt-5">
-                    <div class="form-group flex flex-col text-white gap-5 px-5 py-5 items-center">
-                        <label for="budget">Budget:</label>
-                        <input type="number" id="budget" name="budget" placeholder="" class="text-DarkGreen outline-MintGreen max-w-[100px] py-2 pl-4" required>
-                    </div>
-                    
-                    <fieldset class="flex flex-col md:flex-row text-white px-5 gap-5">
-                        <legend class="text-MintGreen md:text-2xl font-bold pb-5">Expense Details</legend>
+                  
+                    <fieldset class="flex flex-col lg:flex-row text-white px-5 gap-5">
+                        <div class="form-group">
+                            <label for="budget">Budget:</label>
+                            <input type="number" id="budget" name="budget" placeholder="" class="text-DarkGreen outline-MintGreen mt-2 py-1 pl-4" required>
+                        </div>
                         <div class="form-group">
                             <label for="product-name">Product Name:</label>
                             <input type="text" id="product-name" name="product-name" placeholder="Enter Product Name" class="text-DarkGreen outline-MintGreen py-1 px-3 mt-2" required>
@@ -30,9 +29,9 @@
                             <label for="amount">Amount:</label>
                             <input type="number" id="amount" name="amount" placeholder="Amount spent" class="text-DarkGreen outline-MintGreen py-1 pl-3 mt-2" required>
                         </div>
-                        <div class="form-group flex flex-col md:flex-row items-center">
-                            <label for="date">Date</label>
-                            <input type="date" id="date" name="date" class="text-DarkGreen outline-MintGreen py-1 px-3 ml-2 mt-2" required>
+                        <div class="form-group">
+                            <label for="date">Date:</label>
+                            <input type="date" id="date" name="date" class="text-DarkGreen outline-MintGreen py-1 pl-3 mt-2" required>
                         </div>
                        
                     </fieldset>
