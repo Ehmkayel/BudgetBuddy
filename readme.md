@@ -33,7 +33,7 @@ The Budget Tracker is a simple web application that helps users manage their exp
 
 ## Getting Started
 
-To get started, simply click on the link (BudgetBuddy)[https://budget-buddyr.netlify.app/] 
+To get started, simply click on the link [BudgetBuddy](https://budget-buddyr.netlify.app/) 
 
 ## User Guide
 
