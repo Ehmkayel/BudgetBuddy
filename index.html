@@ -11,12 +11,12 @@
 </head>
 <body>
     <div class="container mx-auto flex flex-col justify-center items-center px-5 mt-10">
-        <div class=" flex flex-col justify-center items-center bg-DarkGreen w-full max-w-[900px] shadow-md border rounded-md">
+        <div class=" flex flex-col justify-center items-center bg-DarkGreen w-full shadow-md border rounded-md">
             <header class="flex items-center justify-center py-5 font-bold text-MintGreen md:text-3xl"><h1>Budget Buddy</h1></header>
             <main>
                 <section class="mt-5">
                   
-                    <fieldset class="flex flex-col lg:flex-row text-white px-5 gap-5">
+                    <fieldset class="flex flex-col lg:flex-row text-white px-5 xl:px-52 gap-5">
                         <div class="form-group">
                             <label for="budget">Budget:</label>
                             <input type="number" id="budget" name="budget" placeholder="" class="text-DarkGreen outline-MintGreen mt-2 py-1 pl-4" required>
@@ -37,7 +37,8 @@
                     </fieldset>
                     <div class="flex items-center justify-center mt-5">
                         <button class="px-3  py-2 rounded-lg cursor-pointer bg-MintGreen text-DarkGreen font-bold" id="add-btn">Add Expense</button>
-                    </div>   
+                    </div>  
+                    
                 </section>
                 <section class="flex flex-col md:flex-row gap-10 my-10 mx-10">
                     <div class="card ">
@@ -68,9 +69,9 @@
                 </section>
                 <section>
                     <h2 class="flex items-center justify-center py-5 font-bold text-MintGreen md:text-2xl">Expense history</h2>
-                    <table>
+                    <table class="text-base md:text-xl px-0 p-1  md:p-4 md:px-[5rem] shadow w-full justify-between table-fixed border-separate border border-DeepGreen bg-MintGreen text-left">
                         <thead>
-                            <tr>
+                            <tr class="table-auto w-full border border-DeepGreen bg-MintGreen">
                                 <th>Description</th>
                                 <th>Amount</th>
                                 <th>Date</th>
