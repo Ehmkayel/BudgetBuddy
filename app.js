@@ -7,6 +7,7 @@ const totalIncome = document.getElementById('total-income')
 const totalExpenses = document.getElementById('total-Expenses')
 const balance = document.getElementById('balance')
 const expenseHistory = document.getElementById('expense-history')
+const updateExpenseButton = document.getElementById('updateExpense') 
 
 const expenseLocalStorage = JSON.parse(localStorage.getItem('expenses'))
 let expenses = expenseLocalStorage || []
@@ -14,7 +15,7 @@ let expenses = expenseLocalStorage || []
 const numberLocalStorage = Number(localStorage.getItem('income'))
 let income = numberLocalStorage || 0;
 
-
+let editingExpenseId = null;
 
 const updateBudget = () => {
     const totalExpensesValue = expenses.reduce((accumulator, expense) => accumulator + expense.amount, 0)
@@ -35,8 +36,8 @@ const updateExpenseHistory = () => {
       const dateCell = expenseRow.insertCell()
       const modifyCell = expenseRow.insertCell()
 
-      descriptionCell.textContent = expense.description;
-      amountCell.textContent = `$${expense.amount}`;
+      descriptionCell.textContent = expense.description
+      amountCell.textContent = `$${expense.amount}`
       dateCell.textContent = expense.date;
 
       
@@ -55,15 +56,15 @@ const addExpense = (description, amount, date) => {
         amount: amount, 
         date: date 
     };
-    expenses.push(newExpense);
-    localStorage.setItem('expenses', JSON.stringify(expenses));
-    updateExpenseHistory();
-    updateBudget();
+    expenses.push(newExpense)
+    localStorage.setItem('expenses', JSON.stringify(expenses))
+    updateExpenseHistory()
+    updateBudget()
 }; 
 
 const deleteExpense = (id) => {
-  expenses = expenses.filter(expense => expense.id !== id);
-  localStorage.setItem('expenses', JSON.stringify(expenses));
+  expenses = expenses.filter(expense => expense.id !== id)
+  localStorage.setItem('expenses', JSON.stringify(expenses))
   updateExpenseHistory();
   updateBudget();
 };
@@ -75,6 +76,9 @@ const editExpense = (id) => {
       productName.value = expense.description;
       amountSpent.value = expense.amount;
       dateInput.value = expense.date;
+      editingExpenseId = id; 
+      addExpenseButton.classList.add('hidden')
+      updateExpenseButton.classList.remove('hidden')
     
   }
 };
@@ -88,13 +92,11 @@ addExpenseButton.addEventListener('click', (e) => {
 
   if (description && amount && date) {
       addExpense(description, amount, date);
-      productName.value = '';
-      amountSpent.value = '';
+      productName.value = ''
+      amountSpent.value = ''
       dateInput.value = '';
   }
 });
-
-
 
 
 expenseHistory.addEventListener('click', (e) => {
@@ -110,7 +112,6 @@ expenseHistory.addEventListener('click', (e) => {
 });
 
 
-// Update Income Function
 const updateIncome = () => {
   const newIncome = Number(budget.value);
   if (!isNaN(newIncome)) {
@@ -127,14 +128,33 @@ budget.addEventListener('change', updateIncome);
 totalIncome.textContent = `$${income}`;
 updateExpenseHistory();
 updateBudget();
- 
 
 
+updateExpenseButton.addEventListener('click', (e) => {
+  e.preventDefault();
+  const description = productName.value;
+  const amount = Number(amountSpent.value);
+  const date = dateInput.value;
 
+  if (description && amount && date) {
+    expenses = expenses.map(expense => {
+      if (expense.id === editingExpenseId) {
+        return { ...expense, description, amount, date };
+      }
+      return expense;
+    });
 
-    
- 
+    localStorage.setItem('expenses', JSON.stringify(expenses));
+    updateExpenseHistory();
+    updateBudget();
 
-
-
+   
+    productName.value = '';
+    amountSpent.value = '';
+    dateInput.value = '';
+    editingExpenseId = null;
+    addExpenseButton.classList.remove('hidden');
+    updateExpenseButton.classList.add('hidden');
+  }
+});
  

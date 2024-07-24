@@ -617,12 +617,12 @@ video {
   display: table;
 }
 
-.w-full {
-  width: 100%;
+.hidden {
+  display: none;
 }
 
-.max-w-\[900px\] {
-  max-width: 900px;
+.w-full {
+  width: 100%;
 }
 
 .table-auto {
@@ -824,6 +824,16 @@ video {
   }
 }
 
+.hover\:bg-white:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.hover\:text-DarkGreen:hover {
+  --tw-text-opacity: 1;
+  color: rgb(0 67 67 / var(--tw-text-opacity));
+}
+
 @media (min-width: 768px) {
   .md\:flex-row {
     flex-direction: row;
@@ -857,11 +867,6 @@ video {
 @media (min-width: 1024px) {
   .lg\:flex-row {
     flex-direction: row;
-  }
-
-  .lg\:px-52 {
-    padding-left: 13rem;
-    padding-right: 13rem;
   }
 }
 

@@ -28,6 +28,7 @@ The Budget Tracker is a simple web application that helps users manage their exp
 - Track total income and expenses
 - Delete expenses.
 - Edit existing expenses.
+- Update existing expenses.
 - Calculate and display total expenses and balance.
 - Responsive design using Tailwind CSS.
 
@@ -44,6 +45,7 @@ To get started, simply click on the link [BudgetBuddy](https://budget-buddyr.net
 - Add Expense
 - The history will display in the expense history, then you can edit or delete
 - To edit click on edit
+- Then click on update expense
 - To delete click on delete
 
 ## Installation
