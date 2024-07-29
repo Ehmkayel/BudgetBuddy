@@ -47,6 +47,7 @@ To get started, simply click on the link [BudgetBuddy](https://budget-buddyr.net
 - To edit click on edit
 - Then click on update expense
 - To delete click on delete
+- A modal will popup to confirm if you want to delete or cancel
 
 ## Installation
  

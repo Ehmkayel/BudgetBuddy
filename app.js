@@ -8,6 +8,10 @@ const totalExpenses = document.getElementById('total-Expenses')
 const balance = document.getElementById('balance')
 const expenseHistory = document.getElementById('expense-history')
 const updateExpenseButton = document.getElementById('updateExpense') 
+const deleteModal = document.getElementById('deleteModal');
+const confirmDeleteButton = document.getElementById('confirmDelete');
+const cancelDeleteButton = document.getElementById('cancelDelete');
+
 
 const expenseLocalStorage = JSON.parse(localStorage.getItem('expenses'))
 let expenses = expenseLocalStorage || []
@@ -62,6 +66,7 @@ const addExpense = (description, amount, date) => {
     updateBudget()
 }; 
 
+
 const deleteExpense = (id) => {
   expenses = expenses.filter(expense => expense.id !== id)
   localStorage.setItem('expenses', JSON.stringify(expenses))
@@ -91,10 +96,82 @@ addExpenseButton.addEventListener('click', (e) => {
   const date = dateInput.value;
 
   if (description && amount && date) {
-      addExpense(description, amount, date);
-      productName.value = ''
-      amountSpent.value = ''
-      dateInput.value = '';
+    addExpense(description, amount, date);
+    productName.value = '';
+    amountSpent.value = '';
+    dateInput.value = '';
+    alert('Expense added successfully!');
+
+  } else {
+
+    alert('Please fill in all required fields.'); 
+
+  }
+});
+
+let expenseIdToDelete = null
+
+const showModal = (id) => {
+  expenseIdToDelete = id;
+  deleteModal.classList.remove('hidden');
+}
+
+
+const hideModal = () => {
+  deleteModal.classList.add('hidden');
+  expenseIdToDelete = null;
+}
+
+
+confirmDeleteButton.addEventListener('click', () => {
+  if (expenseIdToDelete !== null) {
+    deleteExpense(expenseIdToDelete);
+    hideModal();
+  }
+});
+
+cancelDeleteButton.addEventListener('click', hideModal);
+
+updateExpenseButton.addEventListener('click', (e) => {
+  e.preventDefault();
+  const description = productName.value;
+  const amount = Number(amountSpent.value);
+  const date = dateInput.value;
+
+  if (description && amount && date) {
+    expenses = expenses.map(expense => {
+      if (expense.id === editingExpenseId) {
+        return { ...expense, description, amount, date };
+      }
+      return expense;
+    });
+
+    localStorage.setItem('expenses', JSON.stringify(expenses));
+    updateExpenseHistory();
+    updateBudget();
+
+    productName.value = '';
+    amountSpent.value = '';
+    dateInput.value = '';
+    editingExpenseId = null;
+    addExpenseButton.classList.remove('hidden');
+    updateExpenseButton.classList.add('hidden');
+
+    
+    alert('Expense updated successfully!');
+  }
+});
+
+
+expenseHistory.addEventListener('click', (e) => {
+  if (e.target.classList.contains('delete-btn')) {
+    const id = Number(e.target.dataset.id);
+    showModal(id); 
+  }
+
+  if (e.target.classList.contains('edit-btn')) {
+    const id = Number(e.target.dataset.id);
+    editExpense(id);
   }
 });
 
@@ -102,7 +179,7 @@ addExpenseButton.addEventListener('click', (e) => {
 expenseHistory.addEventListener('click', (e) => {
   if (e.target.classList.contains('delete-btn')) {
       const id = Number(e.target.dataset.id);
-      deleteExpense(id);
+      showModal(id);
   }
 
   if (e.target.classList.contains('edit-btn')) {
