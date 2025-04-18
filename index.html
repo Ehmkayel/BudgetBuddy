@@ -1,110 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Lamidi Morufat Kajogbola">
-    <meta name="description" content="Budget Buddy: Track income, expenses and account balance. Simplify budget management and achieve financial goals with ease.!">
-    <meta name="keywords" content="budget, finance tracker, budget tracker, income tracker, budget planner">
-    <link rel="stylesheet" href="css/main.css"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Lamidi Morufat Kajogbola" />
+    <meta
+      name="description"
+      content="Budget Buddy: Track income, expenses and account balance. Simplify budget management and achieve financial goals with ease.!"
+    />
+    <meta
+      name="keywords"
+      content="budget, finance tracker, budget tracker, income tracker, budget planner"
+    />
+    <link rel="stylesheet" href="css/main.css" />
     <title>Budget Buddy</title>
-</head>
-<body>
-    <div class="container mx-auto flex flex-col justify-center items-center px-5 mt-10">
-        <div class=" flex flex-col justify-center items-center bg-DarkGreen w-full shadow-md border rounded-md">
-            <header class="flex items-center justify-center py-5 font-bold text-MintGreen md:text-3xl"><h1>Budget Buddy</h1></header>
-            <main>
-                <section class="mt-5">
-                  
-                    <fieldset class="flex flex-col lg:flex-row text-white px-5 xl:px-52 gap-5">
-                        <div class="form-group">
-                            <label for="budget">Budget:</label>
-                            <input type="number" id="budget" name="budget" placeholder="" class="text-DarkGreen outline-MintGreen mt-2 py-1 pl-4" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="product-name">Product Name:</label>
-                            <input type="text" id="product-name" name="product-name" placeholder="Enter Product Name" class="text-DarkGreen outline-MintGreen py-1 px-3 mt-2" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="amount">Amount:</label>
-                            <input type="number" id="amount" name="amount" placeholder="Amount spent" class="text-DarkGreen outline-MintGreen py-1 pl-3 mt-2" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="date">Date:</label>
-                            <input type="date" id="date" name="date" class="text-DarkGreen outline-MintGreen py-1 pl-3 mt-2" required>
-                        </div>
-                       
-                    </fieldset>
-                    <div class="">
-                        <div class="flex items-center justify-center mt-5">
-                            <button class="px-3  py-2 rounded-lg cursor-pointer bg-MintGreen hover:bg-white hover:text-DarkGreen text-DarkGreen font-bold" id="add-btn">Add Expense</button>
-                        </div> 
-                        <div class="flex items-center justify-center mt-5">
-                            <button id="updateExpense" class="px-3 py-2 bg-MintGreen text-DarkGreen cursor-pointer rounded-lg hover:bg-white hover:text-DarkGreen font-bold hidden">Update Expense</button>
-                        </div>
-                   
-                </section>
-                <section class="flex flex-col md:flex-row gap-10 my-10 mx-10">
-                    <div class="card ">
-                            <img src="https://res.cloudinary.com/drphumgcb/image/upload/v1721591800/icons8-income-50_g6xgff.png" alt="income icon">
-                        <div>
-                            <h3>Income</h3>
-                            <span id="total-income">$0</span>
+  </head>
+  <body>
+    <div
+      class="container mx-auto flex flex-col justify-center items-center px-5 mt-10"
+    >
+      <div
+        class="flex flex-col justify-center items-center bg-DarkGreen w-full shadow-md border rounded-md"
+      >
+        <header
+          class="flex items-center justify-center py-5 font-bold text-MintGreen md:text-3xl"
+        >
+          <h1>Budget Buddy</h1>
+        </header>
+        <main>
+          <section class="mt-5">
+            <fieldset
+              class="flex flex-col lg:flex-row text-white px-5 xl:px-52 gap-5"
+            >
+              <div class="form-group">
+                <label for="budget">Budget:</label>
+                <input
+                  type="number"
+                  id="budget"
+                  name="budget"
+                  placeholder=""
+                  class="text-DarkGreen outline-MintGreen mt-2 py-1 pl-4"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="product-name">Product Name:</label>
+                <input
+                  type="text"
+                  id="product-name"
+                  name="product-name"
+                  placeholder="Enter Product Name"
+                  class="text-DarkGreen outline-MintGreen py-1 px-3 mt-2"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="amount">Amount:</label>
+                <input
+                  type="number"
+                  id="amount"
+                  name="amount"
+                  placeholder="Amount spent"
+                  class="text-DarkGreen outline-MintGreen py-1 pl-3 mt-2"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="date">Date:</label>
+                <input
+                  type="date"
+                  id="date"
+                  name="date"
+                  class="text-DarkGreen outline-MintGreen py-1 pl-3 mt-2"
+                  required
+                />
+              </div>
+            </fieldset>
+            <div class="">
+              <div class="flex items-center justify-center mt-5">
+                <button
+                  class="px-3 py-2 rounded-lg cursor-pointer bg-MintGreen hover:bg-white hover:text-DarkGreen text-DarkGreen font-bold"
+                  id="add-btn"
+                >
+                  Add Expense
+                </button>
+              </div>
+              <div class="flex items-center justify-center mt-5">
+                <button
+                  id="updateExpense"
+                  class="px-3 py-2 bg-MintGreen text-DarkGreen cursor-pointer rounded-lg hover:bg-white hover:text-DarkGreen font-bold hidden"
+                >
+                  Update Expense
+                </button>
+              </div>
+            </div>
+          </section>
 
-                        </div>
-                    </div>
-                    <div class="card ">
-                        <img src="https://res.cloudinary.com/drphumgcb/image/upload/v1721671007/icons8-expenses-50_kk8mrv.png" alt="Expense icon">
-                        <div>
-                            <h3>Expenses</h3>
-                            <span id="total-Expenses">$0</span>
+          <section class="flex flex-col md:flex-row gap-10 my-10 mx-10">
+            <div class="card">
+              <img
+                src="https://res.cloudinary.com/drphumgcb/image/upload/v1721591800/icons8-income-50_g6xgff.png"
+                alt="income icon"
+              />
+              <div>
+                <h3>Income</h3>
+                <span id="total-income">$0</span>
+              </div>
+            </div>
+            <div class="card">
+              <img
+                src="https://res.cloudinary.com/drphumgcb/image/upload/v1721671007/icons8-expenses-50_kk8mrv.png"
+                alt="Expense icon"
+              />
+              <div>
+                <h3>Expenses</h3>
+                <span id="total-Expenses">$0</span>
+              </div>
+            </div>
+            <div class="card">
+              <img
+                src="https://res.cloudinary.com/drphumgcb/image/upload/v1721671432/receive-amount_ohhsxl.png"
+                alt="income icon"
+              />
+              <div>
+                <h3>Balance</h3>
+                <span id="balance">$0</span>
+              </div>
+            </div>
+          </section>
 
-                        </div>
-                        
-                    </div>
-                    <div class="card ">
-                        <img src="https://res.cloudinary.com/drphumgcb/image/upload/v1721671432/receive-amount_ohhsxl.png" alt="income icon">
-                        <div>
-                            <h3>Balance</h3>
-                            <span id="balance">$0</span>
+          <!-- Modal Structure -->
+          <div
+            id="deleteModal"
+            class="modal hidden fixed inset-0 bg-black bg-opacity-50 items-center justify-center"
+          >
+            <div class="bg-DarkGreen p-4 rounded shadow-md w-full md:w-1/3">
+              <h2 class="text-lg font-bold mb-4 text-MintGreen">
+                Delete Expense
+              </h2>
+              <p class="text-white">
+                Are you sure you want to delete this expense?
+              </p>
+              <div class="flex justify-end mt-4">
+                <button
+                  id="cancelDelete"
+                  class="mr-4 bg-MintGreen px-4 py-2 rounded"
+                >
+                  Cancel
+                </button>
+                <button
+                  id="confirmDelete"
+                  class="bg-red-500 text-white px-4 py-2 rounded"
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
 
-                        </div>
-                    </div>
-                </section>
-              <!-- Modal Structure -->
-                <div id="deleteModal" class="modal hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                    <div class="bg-DarkGreen p-4 rounded shadow-md w-full md:w-1/3">
-                        <h2 class="text-lg font-bold mb-4 text-MintGreen">Delete Expense</h2>
-                        <p class="text-white">Are you sure you want to delete this expense?</p>
-                      <div class="flex justify-end mt-4">
-                        <button id="cancelDelete" class="mr-4 bg-MintGreen px-4 py-2 rounded">Cancel</button>
-                        <button id="confirmDelete" class="bg-red-500 text-white px-4 py-2 rounded">Delete</button>
-                     </div>
-                    </div>
-                </div>
-  
-                <section>
-                    <h2 class="flex items-center justify-center py-5 font-bold text-MintGreen md:text-2xl">Expense history</h2>
-                    <table class="text-base md:text-xl px-0 p-1  md:p-4 md:px-[5rem] shadow w-full justify-between table-fixed border-separate border border-DeepGreen bg-MintGreen text-left">
-                        <thead>
-                            <tr class="table-auto w-full border border-DeepGreen bg-MintGreen">
-                                <th>Description</th>
-                                <th>Amount</th>
-                                <th>Date</th>
-                                <th>Modify</th>
-                            </tr>
-                        </thead>
-                        <tbody id="expense-history">
-                         
-                        </tbody>
-                    </table>
-                </section>
-            </main>
-        </div>
+          <section>
+            <h2
+              class="flex items-center justify-center py-5 font-bold text-MintGreen md:text-2xl"
+            >
+              Expense history
+            </h2>
+            <table
+              class="text-base md:text-xl px-0 p-1 md:p-4 md:px-[5rem] shadow w-full justify-between table-fixed border-separate border border-DeepGreen bg-MintGreen text-left"
+            >
+              <thead>
+                <tr
+                  class="table-auto w-full border border-DeepGreen bg-MintGreen"
+                >
+                  <th>Description</th>
+                  <th>Amount</th>
+                  <th>Date</th>
+                  <th>Modify</th>
+                </tr>
+              </thead>
+              <tbody id="expense-history"></tbody>
+            </table>
+          </section>
+        </main>
+      </div>
     </div>
-    
-   
 
     <script src="app.js" type="module"></script>
-</body>
+  </body>
 </html>
